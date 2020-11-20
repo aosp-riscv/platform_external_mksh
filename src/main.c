@@ -613,7 +613,7 @@ main_init(int argc, const char *argv[], Source **sp, struct block **lp)
 		if (!isuc(ccp))
 			ccp = null;
 #endif
-		/* FALLTHROUGH */
+		/* FALLTHROUGH */__attribute__((fallthrough));
 
 	/* auto-detect from environment */
 	case 3:
@@ -632,7 +632,7 @@ main_init(int argc, const char *argv[], Source **sp, struct block **lp)
 	/* unknown values */
 	default:
 		utf_flag = 0;
-		/* FALLTHROUGH */
+		/* FALLTHROUGH */__attribute__((fallthrough));
 
 	/* known values */
 	case 1:
@@ -750,7 +750,7 @@ include(const char *name, int argc, const char **argv, bool intr_ok)
 			 */
 			if (intr_ok && ((exstat & 0xFF) - 128) != SIGTERM)
 				return (1);
-			/* FALLTHROUGH */
+			/* FALLTHROUGH */__attribute__((fallthrough));
 		case LEXIT:
 		case LLEAVE:
 		case LSHELL:
@@ -823,7 +823,7 @@ shell(Source * volatile s, volatile int level)
 			/* NOTREACHED */
 		}
 		/* assert: interactive == false */
-		/* FALLTHROUGH */
+		/* FALLTHROUGH */__attribute__((fallthrough));
 	case LINTR:
 		/* we get here if SIGINT not caught or ignored */
 	case LERROR:
@@ -851,7 +851,7 @@ shell(Source * volatile s, volatile int level)
 			herep = heres;
 			break;
 		}
-		/* FALLTHROUGH */
+		/* FALLTHROUGH */__attribute__((fallthrough));
 	case LEXIT:
 	case LLEAVE:
 	case LRETURN:
@@ -970,7 +970,7 @@ unwind(int i)
 		case E_NONE:
 			if (i == LINTR)
 				e->flags |= EF_FAKE_SIGDIE;
-			/* FALLTHROUGH */
+			/* FALLTHROUGH */__attribute__((fallthrough));
 		default:
 			quitenv(NULL);
 		}

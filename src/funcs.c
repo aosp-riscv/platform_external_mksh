@@ -1626,7 +1626,7 @@ c_read(const char **wp)
 	switch (c) {
 	case 'a':
 		aschars = true;
-		/* FALLTHROUGH */
+		/* FALLTHROUGH */__attribute__((fallthrough));
 	case 'A':
 		intoarray = true;
 		break;

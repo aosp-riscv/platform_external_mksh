@@ -395,7 +395,7 @@ execute(struct op * volatile t,
 					switch (t->u.charflag) {
 					case '&':
 						i = 1;
-						/* FALLTHROUGH */
+						/* FALLTHROUGH */__attribute__((fallthrough));
 					case '|':
 						goto TCASE_next;
 					}
@@ -1134,7 +1134,7 @@ builtin(const char *name, int (*func) (const char **))
 	case '~':
 		/* external utility overrides built-in utility, always */
 		flag |= LOWER_BI;
-		/* FALLTHROUGH */
+		/* FALLTHROUGH */__attribute__((fallthrough));
 	case '!':
 		/* external utility overrides built-in utility, with flags */
 		flag |= LOW_BI;

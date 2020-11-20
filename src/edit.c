@@ -2405,7 +2405,7 @@ x_mapin(const char *cp, Area *ap)
 		case '\\':
 			if (cp[1] == '\\' || cp[1] == '^')
 				++cp;
-			/* FALLTHROUGH */
+			/* FALLTHROUGH */__attribute__((fallthrough));
 		default:
 			*op++ = *cp;
 		}
@@ -4073,7 +4073,7 @@ vi_insert(int ch)
 			complete_word(0, 0);
 			break;
 		}
-		/* FALLTHROUGH */
+		/* FALLTHROUGH */__attribute__((fallthrough));
 	/* end nonstandard vi commands } */
 
 	default:
@@ -4197,7 +4197,7 @@ vi_cmd(int argcnt, const char *cmd)
 			cmd = "y$";
 			/* ahhhhhh... */
 
-			/* FALLTHROUGH */
+			/* FALLTHROUGH */__attribute__((fallthrough));
 		case ORD('c'):
 		case ORD('d'):
 		case ORD('y'):
@@ -4283,7 +4283,7 @@ vi_cmd(int argcnt, const char *cmd)
 		case ORD('g'):
 			if (!argcnt)
 				argcnt = hlast;
-			/* FALLTHROUGH */
+			/* FALLTHROUGH */__attribute__((fallthrough));
 		case ORD('G'):
 			if (!argcnt)
 				argcnt = 1;
@@ -4434,12 +4434,12 @@ vi_cmd(int argcnt, const char *cmd)
 				hnum = -1;
 			/* ahhh */
 
-			/* FALLTHROUGH */
+			/* FALLTHROUGH */__attribute__((fallthrough));
 		case ORD('/'):
 			c3 = 1;
 			srchlen = 0;
 			lastsearch = *cmd;
-			/* FALLTHROUGH */
+			/* FALLTHROUGH */__attribute__((fallthrough));
 		case ORD('n'):
 		case ORD('N'):
 			if (lastsearch == ' ')
@@ -4572,7 +4572,7 @@ vi_cmd(int argcnt, const char *cmd)
 		case CTRL_BO:
 			if (!Flag(FVIESCCOMPLETE))
 				return (-1);
-			/* FALLTHROUGH */
+			/* FALLTHROUGH */__attribute__((fallthrough));
 		/* AT&T ksh */
 		case ORD('\\'):
 		/* Nonstandard vi/ksh */
@@ -4645,7 +4645,7 @@ domove(int argcnt, const char *cmd, int sub)
 	case ORD('T'):
 		fsavecmd = *cmd;
 		fsavech = cmd[1];
-		/* FALLTHROUGH */
+		/* FALLTHROUGH */__attribute__((fallthrough));
 	case ORD(','):
 	case ORD(';'):
 		if (fsavecmd == ' ')

@@ -333,7 +333,7 @@ wdvarput(struct shf *shf, const char *wp, int quotelevel, int opmode)
 				++wp;
 				goto wdvarput_csubst;
 			}
-			/* FALLTHROUGH */
+			/* FALLTHROUGH */__attribute__((fallthrough));
 		case CHAR:
 			c = ord(*wp++);
 			shf_putc(c, shf);
@@ -351,12 +351,14 @@ wdvarput(struct shf *shf, const char *wp, int quotelevel, int opmode)
 					break;
 				default:
 					if (quotelevel == 0)
+						shf_putc(ORD('\\'), shf);
+					break;
 						/* FALLTHROUGH */
 				case ORD('"'):
 				case ORD('`'):
 				case ORD('$'):
 				case ORD('\\'):
-					  shf_putc(ORD('\\'), shf);
+					shf_putc(ORD('\\'), shf);
 					break;
 				}
 			shf_putc(c, shf);
@@ -616,7 +618,7 @@ wdscan(const char *wp, int c)
 				return (wp + 1);
 			if (ord(*wp) == ORD(/*{*/ '}'))
 				goto wdscan_csubst;
-			/* FALLTHROUGH */
+			/* FALLTHROUGH */__attribute__((fallthrough));
 		case CHAR:
 		case QCHAR:
 			wp++;

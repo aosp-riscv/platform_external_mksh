@@ -515,7 +515,7 @@ getn(const char *s, int *ai)
 	switch (c) {
 	case '-':
 		neg = true;
-		/* FALLTHROUGH */
+		/* FALLTHROUGH */__attribute__((fallthrough));
 	case '+':
 		c = *s++;
 		break;
@@ -1437,7 +1437,7 @@ print_value_quoted(struct shf *shf, const char *s)
 			case KSH_ESC:
 				/* take E not e because \e is \ in *roff */
 				  c = 'E';
-				/* FALLTHROUGH */
+				/* FALLTHROUGH */__attribute__((fallthrough));
 			case '\\':
 				shf_putc('\\', shf);
 
@@ -1450,7 +1450,7 @@ print_value_quoted(struct shf *shf, const char *s)
 				  if (!ctype(c, C_PRINT))
 #endif
 				    {
-					/* FALLTHROUGH */
+					/* FALLTHROUGH */__attribute__((fallthrough));
 			case '\'':
 					shf_fprintf(shf, "\\%03o", c);
 					break;
@@ -2302,7 +2302,7 @@ chvt(const Getopt *go)
 		break;
 	case '!':
 		++dv;
-		/* FALLTHROUGH */
+		/* FALLTHROUGH */__attribute__((fallthrough));
 	default: {
 		struct stat sb;
 
@@ -2506,7 +2506,7 @@ unbksl(bool cstyle, int (*fg)(void), void (*fp)(int))
 	case '7':
 		if (!cstyle)
 			goto unknown_escape;
-		/* FALLTHROUGH */
+		/* FALLTHROUGH */__attribute__((fallthrough));
 	case '0':
 		if (cstyle)
 			(*fp)(fc);

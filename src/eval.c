@@ -670,7 +670,7 @@ expand(
 							    st->var->name);
 						f &= ~DOBLANK;
 						f |= DOTEMP;
-						/* FALLTHROUGH */
+						/* FALLTHROUGH */__attribute__((fallthrough));
 					default:
 						/* '-' '+' '?' */
 						if (quote)
@@ -835,7 +835,7 @@ expand(
 		case XARGSEP:
 			type = XARG;
 			quote = 1;
-			/* FALLTHROUGH */
+			/* FALLTHROUGH */__attribute__((fallthrough));
 		case XARG:
 			if ((c = ord(*x.str++)) == '\0') {
 				/*

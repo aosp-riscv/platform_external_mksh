@@ -653,7 +653,7 @@ casepart(int endtok, int sALIAS)
 				    ORD('}') ? Tcbrace : Tesac, ATEMP);
 				break;
 			}
-			/* FALLTHROUGH */
+			/* FALLTHROUGH */__attribute__((fallthrough));
 		default:
 			syntaxerr(NULL);
 		}
@@ -679,7 +679,7 @@ casepart(int endtok, int sALIAS)
 				/* FALLTHROUGH */
 		case BRKFT:
 			  t->u.charflag = ORD('&');
-			/* FALLTHROUGH */
+			/* FALLTHROUGH */__attribute__((fallthrough));
 		case BREAK:
 			/* initialised above, but we need to eat the token */
 			ACCEPT;

@@ -944,7 +944,7 @@ shf_vfprintf(struct shf *shf, const char *fmt, va_list args)
 					tmp = 1;
 				} else
 					tmp = 0;
-				/* FALLTHROUGH */
+				/* FALLTHROUGH */__attribute__((fallthrough));
 			case 'u':
 				do {
 					*--cp = digits_lc[lnum % 10];
@@ -1009,7 +1009,7 @@ shf_vfprintf(struct shf *shf, const char *fmt, va_list args)
 		case 'c':
 			flags &= ~FL_DOT;
 			c = (char)(VA(int));
-			/* FALLTHROUGH */
+			/* FALLTHROUGH */__attribute__((fallthrough));
 
 		case '%':
 		default:

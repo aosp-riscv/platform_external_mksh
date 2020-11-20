@@ -539,7 +539,7 @@ getint(struct tbl *vp, mksh_ari_u *nump, bool arith)
 	switch (c) {
 	case '-':
 		neg = true;
-		/* FALLTHROUGH */
+		/* FALLTHROUGH */__attribute__((fallthrough));
 	case '+':
 		c = (unsigned char)*s++;
 		break;
@@ -1370,7 +1370,7 @@ setspec(struct tbl *vp)
 			vp->flag &= ~SPECIAL;
 			return;
 		}
-		/* FALLTHROUGH */
+		/* FALLTHROUGH */__attribute__((fallthrough));
 	case V_HISTSIZE:
 	case V_LINENO:
 	case V_OPTIND:

@@ -278,7 +278,7 @@ yylex(int cf)
 					POP_STATE();
 				break;
 			}
-			/* FALLTHROUGH */
+			/* FALLTHROUGH */__attribute__((fallthrough));
 		case SBASE:
 			if ((unsigned int)c == ORD('[') && (cf & CMDASN)) {
 				/* temporary */
@@ -367,7 +367,7 @@ yylex(int cf)
 				case ORD('"'):
 					if ((statep->ls_flags & LS_HEREDOC))
 						goto heredocquote;
-					/* FALLTHROUGH */
+					/* FALLTHROUGH */__attribute__((fallthrough));
 				case ORD('\\'):
 				case ORD('$'):
 				case ORD('`'):
@@ -578,7 +578,7 @@ yylex(int cf)
 					*wp++ = getsc();
 					break;
 				}
-				/* FALLTHROUGH */
+				/* FALLTHROUGH */__attribute__((fallthrough));
 			default:
  store_char:
 				*wp++ = CHAR;
@@ -728,7 +728,8 @@ yylex(int cf)
 				/* simile for @ */
 				*wp++ = ' ';
 				PUSH_STATE(SPATTERN);
-			} else /* FALLTHROUGH */
+			} else {} /* FALLTHROUGH */
+			__attribute__((fallthrough));
 		case STBRACEBOURNE:
 			  if ((unsigned int)c == ORD(/*{*/ '}')) {
 				POP_STATE();
@@ -757,7 +758,7 @@ yylex(int cf)
 						*wp++ = c;
 						break;
 					}
-					/* FALLTHROUGH */
+					/* FALLTHROUGH */__attribute__((fallthrough));
 				default:
 					*wp++ = '\\';
 					*wp++ = c;
@@ -834,13 +835,13 @@ yylex(int cf)
 					statep->ls_bool = false;
 					break;
 				} else if ((unsigned int)c2 == ORD('"')) {
-					/* FALLTHROUGH */
+					/* FALLTHROUGH */__attribute__((fallthrough));
 			case ORD('"'):
 					PUSH_SRETRACE(SHEREDQUOTE);
 					break;
 				}
 				ungetsc(c2);
-				/* FALLTHROUGH */
+				/* FALLTHROUGH */__attribute__((fallthrough));
 			default:
 				*wp++ = CHAR;
 				*wp++ = c;
@@ -1166,7 +1167,7 @@ readhere(struct ioword *iop)
 				break;
 			/* allow $(...) or (...) to close here */
 			ungetsc(/*(*/ ')');
-			/* FALLTHROUGH */
+			/* FALLTHROUGH */__attribute__((fallthrough));
 		case 0:
 			/*
 			 * Allow EOF here to commands without trailing
